@@ -103,31 +103,35 @@ public class Character {
             for (int i = 0; i < swingDmgRollValue; i++) {
                 DamageSum += rand.nextInt(5) + 1;
             }
+
+            System.out.println(this.CharName + " damages " + _char.CharName + " for " + DamageSum);
             DamageSum += swingDmgModifierValue + this.Weapon.getDmg()
-                    - _char.getArmor(getArmorList(), Zone);
+                    - _char.getArmor(_char.getArmorList(), Zone);
         } else {
             for (int i = 0; i < thrustDmgRollValue; i++) {
                 DamageSum += rand.nextInt(5) + 1;
             }
+
+            System.out.println(this.CharName + " damages " + _char.CharName + " for " + DamageSum);
+
             DamageSum += thrustDmgModifierValue + this.Weapon.getDmg()
-                    - _char.getArmor(getArmorList(), Zone);
+                    - _char.getArmor(_char.getArmorList(), Zone);
 
         }
 
         if (DamageSum <= 0) {
-            System.out.println(_char.CharName + "blocks all damage with " +
-                    _char.getArmorName(getArmorList(), Zone));
+            System.out.println(_char.CharName + " blocks all damage with " +
+                    _char.getArmorName(_char.getArmorList(), Zone));
             return;
         }
 
 
         System.out.println(_char.CharName + " losing " + DamageSum + " HP!");
-        _char.setCurrHP(getCurrHP() - DamageSum);
+        _char.setCurrHP(_char.getCurrHP() - DamageSum);
 
         if (!_char.LowHPDebuffed) _char.LowHPDebuffCheck();
 
         _char.DeathCheck();
-        return;
     }
 
     public void StrongDamage(Character _char, String Zone) {
@@ -322,7 +326,7 @@ public class Character {
 
             if (_char.DefenceChoice(0)) FirstAttackSucc = false;
             else {
-                _char.Damage(_char, Zone);
+                Damage(_char, Zone);
                 FirstAttackSucc = true;
             }
         } else {

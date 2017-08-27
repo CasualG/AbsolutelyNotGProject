@@ -155,7 +155,7 @@ class Main {
         CharWeapon Sabre = new CharWeapon("Sabre", true, 3, "SabreSkill");
         Reven.setWeapon(Sabre);
 
-        Reven.AddArmor(new CharArmor("Armor Plate", "Torso", 3));
+        Reven.AddArmor(new CharArmor("Armor Plate", "Torso", 6));
 
         System.out.println("Reven uses Armor Plate, Sabre+3 and Shield+1");
 
@@ -163,7 +163,7 @@ class Main {
         CharWeapon SabrePleb = new CharWeapon("Sabre", true, 3, "SabreSkill");
         Pleb.setWeapon(SabrePleb);
 
-        Pleb.AddArmor(new CharArmor("Armor Plate", "Torso", 3));
+        Pleb.AddArmor(new CharArmor("Armor Plate", "Torso", 15));
 
         System.out.println("Pleb uses Armor Plate+3, Sabre+3 and Shield+1");
 
