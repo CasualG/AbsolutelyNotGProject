@@ -170,7 +170,7 @@ class Main {
 
         while (Reven.isAlive() && Pleb.isAlive()) {
             Reven.AttackChoice("Torso", Pleb);
-            if (!Pleb.isAlive()) break;
+            if (!Pleb.isAlive() || !Reven.isAlive()) break;
             Pleb.AttackChoice("Torso", Reven);
         }
 

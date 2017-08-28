@@ -1,6 +1,7 @@
-import java.io.*;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.net.InetAddress;
-import java.net.ServerSocket;
 import java.net.Socket;
 
 /**
@@ -11,37 +12,6 @@ public class TestNetworkingClient implements Runnable {
     static private Socket connection;
     static private ObjectOutputStream output;
     static private ObjectInputStream input;
-    int port = 10800;
-
-    private void Initialization() {
-        while (true) {
-            try {
-                ServerSocket ss = new ServerSocket(port);
-                System.out.println("Waiting for connection");
-                Socket socket = ss.accept();
-                System.out.println("Got him!");
-
-                //in & out streams, we need to send and get some data
-                InputStream instream = socket.getInputStream();
-                OutputStream outstream = socket.getOutputStream();
-
-                //Converting to other type (wut)
-                DataInputStream in = new DataInputStream(instream);
-                DataOutputStream out = new DataOutputStream(outstream);
-
-                Object inputChar = null;
-
-                while (true) {
-                    //Тут нужно переслать объект!
-                }
-
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
 
     @Override
     public void run() {
@@ -50,14 +20,16 @@ public class TestNetworkingClient implements Runnable {
             while (true) {
                 output = new ObjectOutputStream(connection.getOutputStream());
                 input = new ObjectInputStream(connection.getInputStream());
+
             }
-        } catch (IOException ex) {
+        }
+        catch (IOException ex) {
 
         }
     }
 
     private static void sendData(Object obj) {
-        try {
+        try{
             output.flush();
             output.writeObject(obj);
         } catch (IOException ex) {

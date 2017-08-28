@@ -1,8 +1,9 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
 
 
-public class Character {
+public class Character implements Serializable {
     Random rand = new Random();
 
     private boolean Alive = true;
